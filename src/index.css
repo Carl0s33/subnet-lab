@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tema claro (padrão) */
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 10%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 10%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 10%;
+
+  /* Verde para botões/ações no claro */
+  --primary: 142 76% 36%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 142 76% 90%;
+  --secondary-foreground: 0 0% 10%;
+
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 40%;
+
+  --accent: 142 76% 94%;
+  --accent-foreground: 0 0% 10%;
+
+  --destructive: 0 72% 45%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 240 5% 88%;
+  --input: 240 5% 88%;
+  --ring: 142 76% 36%;
+
+  --success: 142 76% 36%;
+  --warning: 38 92% 50%;
+  --info: 200 100% 50%;
+
+  --radius: 0.5rem;
+}
+
+/* Tema escuro (ativado via classe .dark no html) */
+.dark {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+
+  --card: 0 0% 5%;
+  --card-foreground: 0 0% 100%;
+
+  --popover: 0 0% 5%;
+  --popover-foreground: 0 0% 100%;
+
+  --primary: 142 76% 45%; /* Verde mais brilhante no escuro */
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 142 76% 15%;
+  --secondary-foreground: 0 0% 100%;
+
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 70%;
+
+  --accent: 0 0% 20%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 142 76% 45%;
+}
+
+/* Estilos base */
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
+}
