@@ -23,11 +23,22 @@
     <meta property="twitter:title" content="Subnet Lab" />
     <meta property="twitter:description" content="Calculadora profissional de sub-redes IPv4. Calcule endereços de rede, broadcast, hosts utilizáveis e muito mais." />
     <meta property="twitter:image" content="https://ipsubnetcraft.com/og-image.jpg" />
-    <script type="module" crossorigin src="/subnet-lab/assets/index-DqqYz3NE.js"></script>
+    <script type="module" crossorigin src="/subnet-lab/assets/index-BRE8MdIO.js"></script>
     <link rel="stylesheet" crossorigin href="/subnet-lab/assets/index-CzIomtXt.css">
   </head>
 
   <body>
     <div id="root"></div>
+    <script>
+      (function () {
+        var base = '/subnet-lab/';
+        // Se estiver exatamente na base (ex.: /subnet-lab/) sem hash,
+        // forçar hash-route para evitar 404 inicial antes do router montar
+        var atBase = window.location.pathname.endsWith(base.replace(/\/$/, '/'));
+        if (atBase && !window.location.hash) {
+          window.location.replace(base + '#/');
+        }
+      })();
+    </script>
   </body>
 </html>
