@@ -1,0 +1,55 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      NODE_VERSION: '20'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine repo name for Vite base
+        id: repoinfo
+        run: |
+          REPO_NAME=${GITHUB_REPOSITORY#*/}
+          echo "repo_name=$REPO_NAME" >> $GITHUB_OUTPUT
+
+      - name: Build
+        run: |
+          REPO_NAME=${{ steps.repoinfo.outputs.repo_name }}
+          echo "Building with base /$REPO_NAME/"
+          npm run build -- --base=/$REPO_NAME/
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          # Keeps commit history on gh-pages clean and small
+          force_orphan: true
+          commit_message: "chore(deploy): publish build to gh-pages"
