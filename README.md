@@ -9,8 +9,6 @@ Calculadora profissional de sub-redes IPv4. Projeto desenvolvido para portfólio
 
 <br/>
 
- Demonstração (GitHub Pages): em breve após o primeiro deploy do Actions
-
 </div>
 
 ## Sobre o projeto
